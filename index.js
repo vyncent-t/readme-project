@@ -2,7 +2,20 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 // TODO: Create an array of questions for user input
-const questions = ["what is the title of your project?","what was the motivation for this project?","why did you build this project?","what problem does this project aim to solve?","explain the installation instructions","provide instructions and examples for use","provide relevant license information","provide information on contributors","provide relevant testing information","provide FAQ information"];
+const questions = [
+    "What is the title of your project?",
+    "What was the motivation for this project?",
+    "Why did you build this project?",
+    "What problem does this project aim to solve?",
+    "explain and provide the installation instructions",
+    "provide examples for uses of this project",
+    "provide relevant license information for this project",
+    "provide information on and for contributors (if none please state so)",
+    "provide relevant testing information",
+    "provide FAQ information",
+    "What is your gitHub username",
+    "What is your email?"
+];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, template) {
@@ -66,6 +79,16 @@ function init() {
             name: "faq",
             message: questions[9]
         },
+        {
+            type: "input",
+            name: "gitname",
+            message: questions[10]
+        },
+        {
+            type: "input",
+            name: "email",
+            message: questions[11]
+        },
     ]).then(result => {
         let userTitle = result.title;
         console.log(`user title: ${userTitle}`);
@@ -97,43 +120,59 @@ function init() {
         let userFAQ = result.faq
         console.log(`FAQ: ${userFAQ}`)
 
-        let template = `
-        # ${userTitle}
+        let userGitname = result.gitname
+        console.log(`user github link: ${userGitname}`)
 
-        ## Description
-        ${questions[1]}
-        -${userWhat}
-        
-        ${questions[2]}
-        -${userWhy}
+        let userEmail = result.email
+        console.log(`user email: ${userEmail}`)
 
-        ${questions[3]}
-        -${userAim}
+        let readTemp = `
+# ${userTitle}
 
-        ## Table of Contents
+## Description
+${questions[1]}
+-${userWhat}
 
-        [Installation]
+${questions[2]}
+-${userWhy}
 
-        [Usage]
+${questions[3]}
+-${userAim}
 
-        [Credits]
+## Table of Contents
+[Installation](#installation)
 
-        [License]
+[Usage](#usage)
 
-        ## Installation
-        - ${userInst}
+[Contribution](#contribution)
 
-        ## Usage
-        - ${userUse}
+[License](#license)
 
-        ## Credits
-        - ${userCont}
+## Installation
+- ${userInst}
 
-        ## License
-        - ${userLicense}
+## Usage
+- ${userUse}
 
+## Contribution
+- ${userCont}
 
-        `
+## License
+- ${userLicense}
+
+## Tests
+- ${userExp}
+
+## Questions
+FAQ 
+${userFAQ}
+
+Find me on github at https://github.com/${userGitname}
+For further questions please email me at ${userEmail}
+`
+
+    writeToFile('README.md', readTemp)
+    
     })
 }
 
