@@ -19,10 +19,10 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, template) {
-    fs.writeFile(fileName,template, function(err){
+    fs.writeFile(fileName, template, function (err) {
         if (!err) {
             console.log(`index page created`)
-        } else {console.log(`error ${err}`)}
+        } else { console.log(`error ${err}`) }
     })
 }
 
@@ -63,7 +63,7 @@ function init() {
             type: "list",
             name: "license",
             message: questions[6],
-            choices: ['apache','bsd','mit','none']
+            choices: ['apache', 'bsd', 'mit', 'none']
         },
         {
             type: "input",
@@ -105,16 +105,16 @@ function init() {
 
         let userInst = result.inst
         console.log(`user instructions: ${userInst}`)
-        
+
         let userUse = result.use
         console.log(`usage info: ${userUse}`)
-        
+
         let userLicense = result.license
         console.log(`license info: ${userLicense}`)
 
-    let alicense = `[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`
+        let alicense = `[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`
 
-    let alicenseInfo = `Licensed under the Apache License, Version 2.0 (the "License");
+        let alicenseInfo = `Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
 
@@ -128,7 +128,7 @@ function init() {
 
 
 
-    let blicense = `[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)`
+        let blicense = `[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)`
 
         let blicenseInfo = `Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
@@ -140,20 +140,20 @@ function init() {
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.`
 
-    let mlicense = `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
+        let mlicense = `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
 
-    let mlicenseInfo = `Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+        let mlicenseInfo = `Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`
 
-    let nlicense = " "
+        let nlicense = " "
 
         let licenseInfo;
         let licenseText;
 
-        if(userLicense == 'apache') {
+        if (userLicense == 'apache') {
             licenseInfo = alicense
             licenseText = alicenseInfo
         } else if (userLicense == 'bsd') {
@@ -162,14 +162,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         } else if (userLicense == 'mit') {
             licenseInfo = mlicense
             licenseText = mlicenseInfo
-        } else {licenseInfo = nlicense}
-        
+        } else { licenseInfo = nlicense }
+
         let userCont = result.team
         console.log(`contributor info: ${userCont}`)
-        
+
         let userExp = result.exp
         console.log(`user experimental info: ${userExp}`)
-        
+
         let userFAQ = result.faq
         console.log(`FAQ: ${userFAQ}`)
 
@@ -231,8 +231,8 @@ Find me on github at https://github.com/${userGitname}
 For further questions please email me at ${userEmail}
 `
 
-    writeToFile('README.md', readTemp)
-    
+        writeToFile('xREADME.md', readTemp)
+
     })
 }
 
